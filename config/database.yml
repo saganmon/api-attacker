@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: api-attacker_production
-  username: api-attacker
-  password: <%= ENV['API-ATTACKER_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
