@@ -1,0 +1,5 @@
+郵便番号検索API(zipcloud)
+<br>
+= form_with(model: @postal_code, url: addresses_path, method: :get, local: true) do |f|
+  = f.text_field :number, class:"postal-code-search__field", placeholder: "7桁/ハイフン無し"
+  = f.submit "検索する"
