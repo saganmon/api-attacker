@@ -1,0 +1,19 @@
+%p 郵便番号:
+= @zipcode
+%p 都道府県:
+= @address1
+%p 市区町村:
+= @address2
+%p 町名:
+= @address3
+%p
+-# リクエストパラメタを表示
+リクエストパラメタ:
+= @query
+-# 生のjsonを表示
+result:
+= @result
+%p
+-# エラーメッセージを表示
+message:
+= @message
