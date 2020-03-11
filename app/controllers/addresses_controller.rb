@@ -8,11 +8,16 @@ class AddressesController < ApplicationController
     # リクエストパラメタを、インスタンス変数に格納
     @query = uri.query
 
-    # 新しくHTTPセッションを開始し、結果をresponseへ格納
+    # [GETリクエスト]
+    # Net::HTTP.startで新しくHTTPセッションを開始し、結果をresponseへ格納
+    # 既にセッションが開始している場合はIOErrorが発生
     response = Net::HTTP.start(uri.host, uri.port) do |http|
       # 接続時に待つ最大秒数を設定
+      # タイムアウト時はTimeoutError例外が発生
       http.open_timeout = 5
       # 読み込み一回でブロックして良い最大秒数を設定
+      # デフォルトは60秒
+      # タイムアウト時はTimeoutError例外が発生
       http.read_timeout = 10
       # ここでWebAPIを叩いている
       # Net::HTTPResponseのインスタンスが返ってくる
@@ -24,7 +29,9 @@ class AddressesController < ApplicationController
       case response
       # 成功した場合
       when Net::HTTPSuccess
+        # [JSONパース処理]
         # responseのbody要素をJSON形式で解釈し、hashに変換
+        # JSON::ParserErrorが発生する可能性がある
         @result = JSON.parse(response.body)
         # 表示用の変数に結果を格納
         @zipcode = @result["results"][0]["zipcode"]
@@ -49,6 +56,7 @@ class AddressesController < ApplicationController
       @message = "e.message"
     end
   end
+
 
   private
 

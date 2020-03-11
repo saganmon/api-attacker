@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :homes, only: [:index]
   resources :addresses, only: [:index]
+  resources :qiitas, only: [:index]
 end
