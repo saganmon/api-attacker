@@ -1,7 +1,7 @@
 class QiitasController < ApplicationController
 
   def index
-    @items = QiitaItem.get
+    @items = QiitaItem.get_response
   end
 
 end

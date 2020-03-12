@@ -1,9 +1,10 @@
 require 'json'
 
 class QiitaItem
-  def self.get
+  def self.get_response
     url = 'https://qiita.com'
     connection = Faraday.new(url: url)
+    binding.pry
     response = connection.get do |req|
       req.url '/api/v2/items', page: 1, per_page: 100, query: 'tag:Rails updated:>2019-02 stocks:>3'
     end

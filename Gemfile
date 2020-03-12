@@ -81,4 +81,4 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "breadcrumbs_on_rails"
-gem 'faraday'
+gem 'faraday', '~> 0.9.1'
